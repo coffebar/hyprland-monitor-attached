@@ -10,7 +10,7 @@ It will listen to Hyprland's `monitoradded` event and run your script when you h
 
 Your bash script may do any tasks your want, for example, move workspaces to the attached monitor, set wallpapers, change bar configuration. See example.sh and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
 
-### Install **hyprland-monitor-attached** from [AUR](https://aur.archlinux.org/packages/hyprland-monitor-attached)
+## Install **hyprland-monitor-attached** from [AUR](https://aur.archlinux.org/packages/hyprland-monitor-attached)
 
 ```bash 
 # e.g.
