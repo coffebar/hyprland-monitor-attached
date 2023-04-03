@@ -9,7 +9,7 @@ Install this software and run with a path to the bash script as an argument.
 It will listen to Hyprland's `monitoradded` event and run your script when you have attached a monitor.
 
 Your bash script may do any tasks your want, for example, move workspaces to the attached monitor, set wallpapers, change bar configuration. See example.sh and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
-<!--
+
 ### Install **hyprland-monitor-attached** from [AUR](https://aur.archlinux.org/packages/hyprland-monitor-attached)
 
 ```bash 
@@ -64,7 +64,7 @@ Add this line to your hyprland.conf
 ```
 exec-once = ~/.local/bin/hyprland-monitor-attached PATH_TO_YOUR_SHCRIPT.sh
 ```
--->
+
 -----
 
 ## Contribution
