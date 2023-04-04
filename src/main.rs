@@ -25,7 +25,7 @@ fn listen(socket_addr: String) -> std::io::Result<()> {
         if data_parts[0] == "monitoradded" {
             Command::new("/bin/sh")
                 .args(args.clone())
-                .output()
+                .spawn()
                 .expect("Failed to execute command");
         }
     }
