@@ -14,6 +14,10 @@ fn listen(socket_addr: String) -> std::io::Result<()> {
         }
     };
     let mut args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        println!("Usage: provide a script to execute.");
+        std::process::exit(1);
+    }
     args.remove(0);
     let mut reader = BufReader::new(stream);
     loop {
