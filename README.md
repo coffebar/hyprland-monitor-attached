@@ -22,7 +22,7 @@ and
 Add this line to your hyprland.conf
 
 ```
-exec-once = /usr/bin/hyprland-monitor-attached PATH_TO_YOUR_SHCRIPT.sh
+exec-once = /usr/bin/hyprland-monitor-attached PATH_TO_ATTACHED_SHCRIPT.sh [PATH_TO_DETACHED_SHCRIPT.sh]
 ```
 
 -----
@@ -37,7 +37,7 @@ cargo install hyprland-monitor-attached
 Add this line to your hyprland.conf
 
 ```
-exec-once = ~/.cargo/bin/hyprland-monitor-attached PATH_TO_YOUR_SHCRIPT.sh
+exec-once = ~/.cargo/bin/hyprland-monitor-attached PATH_TO_ATTACHED_SHCRIPT.sh [PATH_TO_DETACHED_SHCRIPT.sh]
 ```
 
 
@@ -62,7 +62,7 @@ cp target/release/hyprland-monitor-attached ~/.local/bin/
 Add this line to your hyprland.conf
 
 ```
-exec-once = ~/.local/bin/hyprland-monitor-attached PATH_TO_YOUR_SHCRIPT.sh
+exec-once = ~/.local/bin/hyprland-monitor-attached PATH_TO_ATTACHED_SHCRIPT.sh [PATH_TO_DETACHED_SHCRIPT.sh]
 ```
 
 -----
