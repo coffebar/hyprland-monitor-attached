@@ -6,9 +6,11 @@ Run the user's script when you attach the monitor. When you detached your laptop
 
 Install this software and run with a path to the bash script as an argument.
 
-It will listen to Hyprland's `monitoradded` event and run your script when you have attached a monitor.
+It will listen to Hyprland's `monitoradded` and `monitorremoved` events and run your scripts.
 
-Your bash script may do any tasks your want, for example, move workspaces to the attached monitor, set wallpapers, change bar configuration. See example.sh and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
+Monitor's ID will be passed to script as argument `$1`.
+
+Your bash script may do any tasks your want, for example, move workspaces to the attached monitor, set wallpapers, change bar configuration. See example script added.sh and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
 
 ## Install **hyprland-monitor-attached** from [AUR](https://aur.archlinux.org/packages/hyprland-monitor-attached)
 

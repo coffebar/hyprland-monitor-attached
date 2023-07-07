@@ -13,12 +13,11 @@ fn listen(socket_addr: String, script_attached: &str, script_detached: Option<&s
             return Err(e);
         }
     };
-    let mut args: Vec<String> = env::args().collect();
+    let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
         println!("Usage: provide a script to execute.");
         std::process::exit(1);
     }
-    args.remove(0);
     let mut reader = BufReader::new(stream);
     loop {
         // read message from socket
@@ -29,14 +28,14 @@ fn listen(socket_addr: String, script_attached: &str, script_detached: Option<&s
         if data_parts[0] == "monitoradded" {
             Command::new("/bin/sh")
                 .arg(script_attached)
-                .args(args.clone())
+                .args([data_parts[1]])
                 .spawn()
                 .expect("Failed to execute command");
         } else if data_parts[0] == "monitorremoved" {
             if let Some(script_detached) = script_detached {
                 Command::new("/bin/sh")
                     .arg(script_detached)
-                    .args(args.clone())
+                    .args([data_parts[1]])
                     .spawn()
                     .expect("Failed to execute command");
             }
