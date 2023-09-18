@@ -1,6 +1,6 @@
 # Hyprland monitor attached
 
-Run the user's script when you attach the monitor. When you detached your laptop from the monitor, then attached it again, you no longer need to manually move your workspaces to the monitor if you will make a simple script like in example.sh and setup it up with this program.
+Run the user's script when you attach the monitor. When you detach your laptop from the monitor, and then attach it again, you no longer need to manually move your workspaces to the monitor if you make a simple script like in [example](https://github.com/coffebar/hyprland-monitor-attached/blob/main/added.sh) and setup it up with this program.
 
 ## How to use
 
@@ -8,9 +8,9 @@ Install this software and run with a path to the bash script as an argument.
 
 It will listen to Hyprland's `monitoradded` and `monitorremoved` events and run your scripts.
 
-Monitor's ID will be passed to script as argument `$1`.
+The monitor's ID will be passed to the script as argument `$1`.
 
-Your bash script may do any tasks your want, for example, move workspaces to the attached monitor, set wallpapers, change bar configuration. See example script added.sh and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
+Your bash script may do any tasks you want, for example, move workspaces to the attached monitor, set wallpapers, or change bar configuration. See the example script [added.sh](https://github.com/coffebar/hyprland-monitor-attached/blob/main/added.sh) and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
 
 ## Install **hyprland-monitor-attached** from [AUR](https://aur.archlinux.org/packages/hyprland-monitor-attached)
 
