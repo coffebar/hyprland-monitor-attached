@@ -12,6 +12,8 @@ The monitor's ID will be passed to the script as argument `$1`.
 
 Your bash script may do any tasks you want, for example, move workspaces to the attached monitor, set wallpapers, or change bar configuration. See the example script [added.sh](https://github.com/coffebar/hyprland-monitor-attached/blob/main/added.sh) and [wiki](https://wiki.hyprland.org/Configuring/Dispatchers/).
 
+**Note: Don't forget to set execute permission for your scripts:** `chmod u+x added.sh`
+
 ## Install **hyprland-monitor-attached** from [AUR](https://aur.archlinux.org/packages/hyprland-monitor-attached)
 
 ```bash 
