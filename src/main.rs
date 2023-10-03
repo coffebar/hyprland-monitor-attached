@@ -1,6 +1,8 @@
 use std::env; // read env variables
+use std::fs::File;
 use std::io::BufRead; // read unix socket
 use std::io::BufReader; // read unix socket
+use std::os::unix::fs::PermissionsExt; // check file permissions
 use std::os::unix::net::UnixStream;
 use std::process::Command; // execute system command
 
@@ -26,12 +28,47 @@ fn listen(socket_addr: String, script_attached: &str, script_detached: Option<&s
         let data = String::from_utf8_lossy(&buf);
         let data_parts: Vec<&str> = data.trim().split(">>").collect();
         if data_parts[0] == "monitoradded" {
+            // check user has permission to execute script
+            let metadata = {
+                let this = File::open(script_attached);
+                match this {
+                    Ok(t) => t,
+                    Err(_e) => {
+                        eprintln!("Error: '{script_attached}' file not found.");
+                        continue;
+                    }
+                }
+            }
+            .metadata()
+            .unwrap();
+            let permissions = metadata.permissions();
+            if !permissions.mode() & 0o100 != 0 {
+                eprintln!("Error: '{script_attached}' file is not executable.");
+                continue;
+            }
             Command::new(script_attached)
                 .args([data_parts[1]])
                 .spawn()
                 .expect("Failed to execute command");
         } else if data_parts[0] == "monitorremoved" {
             if let Some(script_detached) = script_detached {
+                let metadata = {
+                    let this = File::open(script_detached);
+                    match this {
+                        Ok(t) => t,
+                        Err(_e) => {
+                            eprintln!("Error: '{script_detached}' file not found.");
+                            continue;
+                        }
+                    }
+                }
+                .metadata()
+                .unwrap();
+                let permissions = metadata.permissions();
+                if !permissions.mode() & 0o100 != 0 {
+                    eprintln!("Error: '{script_detached}' file is not executable.");
+                    continue;
+                }
                 Command::new(script_detached)
                     .args([data_parts[1]])
                     .spawn()
