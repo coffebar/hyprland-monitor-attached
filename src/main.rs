@@ -26,15 +26,13 @@ fn listen(socket_addr: String, script_attached: &str, script_detached: Option<&s
         let data = String::from_utf8_lossy(&buf);
         let data_parts: Vec<&str> = data.trim().split(">>").collect();
         if data_parts[0] == "monitoradded" {
-            Command::new("/bin/sh")
-                .arg(script_attached)
+            Command::new(script_attached)
                 .args([data_parts[1]])
                 .spawn()
                 .expect("Failed to execute command");
         } else if data_parts[0] == "monitorremoved" {
             if let Some(script_detached) = script_detached {
-                Command::new("/bin/sh")
-                    .arg(script_detached)
+                Command::new(script_detached)
                     .args([data_parts[1]])
                     .spawn()
                     .expect("Failed to execute command");
