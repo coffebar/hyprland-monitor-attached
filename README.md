@@ -2,6 +2,20 @@
 
 Run the user's script when you attach the monitor. When you detach your laptop from the monitor, and then attach it again, you no longer need to manually move your workspaces to the monitor if you make a simple script like in [example](https://github.com/coffebar/hyprland-monitor-attached/blob/main/added.sh) and setup it up with this program.
 
+## Note
+
+On Hyprland 0.55+ you can replace this program with a configuration like this:
+
+```lua
+hl.on("monitor.added", function(monitor)
+	hl.dispatch(hl.exec_cmd("~/your_script.sh " .. monitor.name))
+end)
+
+hl.on("monitor.removed", function(monitor)
+	hl.dispatch(hl.exec_cmd("~/other_script.sh " .. monitor.name))
+end)
+```
+
 ## How to use
 
 Install this software and run with a path to the bash script as an argument.
